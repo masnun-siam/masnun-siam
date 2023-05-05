@@ -13,7 +13,7 @@
 
 - 📫 How to reach me **github.rv9io@simplelogin.com**
 
-- ⚡ Fun fact **I love watching anime.**
+- ⚡ Fun fact about me **Hardcore VIM user, prefer tabs over spaces, love watching anime.**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
