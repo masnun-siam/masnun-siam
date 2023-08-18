@@ -11,7 +11,7 @@
 
 - 💬 Ask me about **Flutter, Dart, Firebase**
 
-- 📫 How to reach me **github.rv9io@simplelogin.com**
+- 📫 How to reach me **echo@msiamn.dev**
 
 - ⚡ Fun fact about me **Hardcore VIM user, prefer tabs over spaces, love watching anime.**
 
