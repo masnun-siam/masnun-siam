@@ -7,7 +7,7 @@
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=masnun-siam" alt="masnun-siam" /></a> </p>
 
-- 🌱 I’m currently learning **Blockchain, Docker & TypeScript**
+- 🌱 I’m currently learning **Docker & GoLang**
 
 - 💬 Ask me about **Flutter, Dart, Firebase**
 
