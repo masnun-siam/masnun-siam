@@ -7,7 +7,7 @@
 
 <!-- <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=masnun-siam" alt="masnun-siam" /></a> </p> -->
 
-<a href="https://app.daily.dev/msiamn"><img src="https://api.daily.dev/devcards/v2/J2KTzSxTiHflp2Nr2IurQ.png?type=wide&r=atx" width="652" alt="Masnun Siam's Dev Card"/></a> 
+<a href="https://app.daily.dev/msiamn"><img src="https://api.daily.dev/devcards/v2/J2KTzSxTiHflp2Nr2IurQ.png?type=wide&r=6px" width="652" alt="Masnun Siam's Dev Card"/></a>
 
 - 🌱 I’m currently learning **Docker & GoLang**
 
