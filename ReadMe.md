@@ -9,13 +9,13 @@
 
 <a href="https://app.daily.dev/msiamn"><img src="https://api.daily.dev/devcards/v2/J2KTzSxTiHflp2Nr2IurQ.png?type=wide&r=6px" width="652" alt="Masnun Siam's Dev Card"/></a>
 
-- 🌱 I’m currently learning **Docker & GoLang**
+- 🌱 I’m currently learning **Docker & AWS**
 
-- 💬 Ask me about **Flutter, Dart, Firebase**
+- 💬 Ask me about **Flutter, Dart, Laravel, PHP, Firebase**
 
 - 📫 How to reach me **echo@msiamn.dev**
 
-- ⚡ Fun fact about me **Hardcore VIM user, prefer tabs over spaces, love watching anime.**
+- ⚡ Fun fact about me **Hardcore VIM user, love watching anime.**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
