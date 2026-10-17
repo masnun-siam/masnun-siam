@@ -10,7 +10,7 @@
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white)](https://stackoverflow.com/users/13317943/masnun-siam)
 [![Codeforces](https://img.shields.io/badge/Codeforces-1F8ACB?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/msiamn)
 
-<img src="https://komarev.com/ghpvc/?username=masnun-siam&label=Profile%20views&color=0e75b6&style=flat" alt="Profile views" />
+<img src="https://visitor-badge.laobi.icu/badge?page_id=masnun-siam.masnun-siam&left_text=Profile%20views&right_color=%230e75b6" alt="Profile views" />
 
 </div>
 
