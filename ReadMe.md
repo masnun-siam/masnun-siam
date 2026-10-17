@@ -4,8 +4,8 @@
 
 <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=22&pause=1200&color=58A6FF&center=true&vCenter=true&width=620&lines=Hi%2C+I'm+Masnun+Siam+%F0%9F%91%8B;I+turn+coffee+into+apps+%E2%98%95;%3Awq+is+my+love+language;I+put+the+%22AI%22+in+%22pAIr+programming%22;My+code+reviewer+is+a+Large+Language+Model;Anime+enjoyer+%E2%9C%A8" alt="Typing intro" />
 
-[![Website](https://img.shields.io/badge/masnun--siam.com-0e75b6?style=for-the-badge&logo=googlechrome&logoColor=white)](https://masnun-siam.com)
-[![Email](https://img.shields.io/badge/echo@masnun--siam.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:echo@masnun-siam.com)
+[![Website](https://img.shields.io/badge/masnunsiam.com-0e75b6?style=for-the-badge&logo=googlechrome&logoColor=white)](https://masnunsiam.com)
+[![Email](https://img.shields.io/badge/echo@masnunsiam.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:echo@masnunsiam.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge)](https://linkedin.com/in/msiamn)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-F58025?style=for-the-badge&logo=stackoverflow&logoColor=white)](https://stackoverflow.com/users/13317943/masnun-siam)
 [![Codeforces](https://img.shields.io/badge/Codeforces-1F8ACB?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/msiamn)
