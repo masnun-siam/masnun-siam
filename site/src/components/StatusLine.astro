@@ -1,0 +1,34 @@
+---
+const domain = Astro.site?.host;
+---
+
+<div class="status">
+	<span class="mode">NORMAL</span>
+	<span class="domain">{domain}</span>
+	<a href="/#contact"><span aria-hidden="true">:wq </span>to contact</a>
+</div>
+
+<style>
+	.status {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.25rem 1rem;
+		padding: 0.25rem 0;
+		border-top: 1px solid var(--border);
+		font-family: var(--font-mono);
+		font-size: 0.875rem;
+	}
+
+	.mode {
+		padding: 0 0.5rem;
+		background: var(--ok);
+		color: var(--bg);
+		font-weight: 700;
+	}
+
+	.domain {
+		flex: 1;
+		color: var(--muted);
+	}
+</style>
