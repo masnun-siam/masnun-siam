@@ -1,0 +1,44 @@
+---
+const links = [
+	{ href: '#work', label: 'work' },
+	{ href: '#projects', label: 'projects' },
+	{ href: '#skills', label: 'skills' },
+];
+---
+
+<div class="bar">
+	<a class="home" href="/">~/masnun-siam</a>
+	<nav aria-label="Sections">
+		<ul>
+			{links.map(({ href, label }) => <li><a href={href}>{label}</a></li>)}
+		</ul>
+	</nav>
+</div>
+
+<style>
+	.bar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem 1rem;
+		padding-block: 1rem;
+		border-bottom: 1px solid var(--border);
+		font-family: var(--font-mono);
+	}
+
+	.home {
+		color: var(--ok);
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 1rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+</style>

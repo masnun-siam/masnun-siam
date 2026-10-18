@@ -1,0 +1,38 @@
+---
+interface Props {
+	id: string;
+	title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<section id={id} aria-labelledby={`${id}-title`}>
+	<h2 id={`${id}-title`}><span aria-hidden="true">## </span>{title}</h2>
+	<slot />
+</section>
+
+<style>
+	section {
+		padding-block: 2rem;
+	}
+
+	h2 {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin: 0 0 1rem;
+		font-size: 1.25rem;
+	}
+
+	/* The rule line after the title. */
+	h2::after {
+		content: '';
+		flex: 1;
+		border-top: 1px solid var(--border);
+	}
+
+	h2 span {
+		color: var(--muted);
+	}
+</style>
