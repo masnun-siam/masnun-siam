@@ -42,6 +42,7 @@ const projectsFile = file('src/content/projects.yaml');
 
 const projects = defineCollection({
 	// A schema validates one entry at a time, so unique `order` is checked after the file loads.
+	// ponytail: runs on build and dev start only; the file loader's dev watcher reloads without it.
 	loader: {
 		name: 'projects-loader',
 		load: async (context: LoaderContext) => {
