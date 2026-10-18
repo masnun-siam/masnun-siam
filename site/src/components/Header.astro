@@ -1,13 +1,13 @@
 ---
 const links = [
-	{ href: '#work', label: 'work' },
-	{ href: '#projects', label: 'projects' },
-	{ href: '#skills', label: 'skills' },
+	{ href: '/#work', label: 'work' },
+	{ href: '/#projects', label: 'projects' },
+	{ href: '/#skills', label: 'skills' },
 ];
 ---
 
 <div class="bar">
-	<a class="home" href="/">~/masnun-siam</a>
+	<a class="home" href="/"><span aria-hidden="true">~/</span>masnun-siam</a>
 	<nav aria-label="Sections">
 		<ul>
 			{links.map(({ href, label }) => <li><a href={href}>{label}</a></li>)}
