@@ -1,0 +1,14 @@
+- id: mobile
+  order: 1
+  title: Mobile
+  items: [Flutter, Dart, Firebase, Appwrite]
+
+- id: backend-web
+  order: 2
+  title: Backend & Web
+  items: [Laravel, PHP, MySQL, TypeScript, Python]
+
+- id: tools-devops
+  order: 3
+  title: Tools & DevOps
+  items: [Neovim, Linux, macOS, Git, Docker, AWS, Postman, Claude Code]

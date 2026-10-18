@@ -1,0 +1,51 @@
+- id: blubird-software-engineer
+  company: BluBird Interactive Ltd.
+  title: Software Engineer
+  start: 2024-10
+  location: Dhaka
+  mode: Remote
+  highlights:
+    - Build robust server-side solutions, RESTful APIs and scalable web applications with Laravel and PHP.
+    - Collaborate with cross-functional teams to deliver software that meets business requirements.
+  tags: [PHP, Laravel, MySQL, REST APIs, Git]
+
+- id: binary-fusion-senior-software-engineer
+  company: Binary Fusion
+  title: Senior Software Engineer (Mobile)
+  start: 2024-03
+  end: 2024-10
+  location: Dhaka
+  mode: On-site
+  highlights:
+    - Led a small, diverse team of junior developers and delivered stable client projects.
+    - Contributed to backend development with PHP and Laravel.
+    - Reviewed code to ensure quality and adherence to best practices.
+  tags: [Flutter, Dart, PHP, Laravel, Firebase, MySQL]
+
+- id: binary-fusion-software-engineer
+  company: Binary Fusion
+  title: Software Engineer (Mobile)
+  start: 2023-03
+  end: 2024-02
+  location: Dhaka
+  mode: On-site
+  highlights:
+    - Used native platform channels to integrate Flutter apps with platform-specific components.
+    - Implemented complex designs with CustomPaint.
+    - Deployed and published apps on the Google Play Store and Apple App Store.
+    - Integrated payments with In-App Purchase and Stripe.
+  tags: [Flutter, Dart, Firebase, Stripe, In-App Purchase, SQLite]
+
+- id: roxarth-manhattan-junior-flutter-developer
+  company: Roxarth Manhattan
+  title: Junior Flutter Developer
+  start: 2020-11
+  end: 2023-02
+  location: New York
+  mode: Remote
+  highlights:
+    - Developed and maintained cross-platform apps for various clients with Flutter and Dart.
+    - Managed state with Provider, BLoC, Riverpod and GetX.
+    - Integrated apps with REST APIs, Firebase and cloud services, applying TDD, DDD, MVC and MVVM.
+    - Explored blockchain and Ethereum, building decentralized apps with Solidity.
+  tags: [Flutter, Dart, Firebase, Stripe, Pusher, Solidity, Web3]
