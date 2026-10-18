@@ -9,7 +9,7 @@
         aria-labelledby="descId"
       >
         <title id="titleId">Masnun Siam&#39;s GitHub Stats, Rank: A-</title>
-        <desc id="descId">Total Stars Earned: 11, Total Commits  : 6496, Total PRs: 1757, Total Issues: 2671, Contributed to (last year): 16</desc>
+        <desc id="descId">Total Stars Earned: 11, Total Commits  : 6510, Total PRs: 1764, Total Issues: 2689, Contributed to (last year): 16</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 80.1559092427055;
+        stroke-dashoffset: 80.15142751194144;
       }
     }
   
