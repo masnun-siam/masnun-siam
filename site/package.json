@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run check:headers",
+    "check:headers": "node scripts/check-headers.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro"
