@@ -1,5 +1,120 @@
 ---
-import Section from './Section.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('profile', 'masnun-siam');
+if (!entry) throw new Error('profile entry "masnun-siam" is missing from profile.yaml');
+const { name, tagline, location, about, email, socials } = entry.data;
+
+const social = (label: string) => {
+	const found = socials.find((s) => s.label === label);
+	if (!found) throw new Error(`profile.yaml socials has no "${label}" entry`);
+	return found.url;
+};
+const links = [
+	{ label: 'Email', href: `mailto:${email}`, external: false },
+	{ label: 'GitHub', href: social('GitHub'), external: true },
+	{ label: 'LinkedIn', href: social('LinkedIn'), external: true },
+];
 ---
 
-<Section id="about" title="about" />
+<section id="about" aria-labelledby="about-title">
+	<p class="prompt"><span aria-hidden="true">$ </span>whoami</p>
+	<h1 id="about-title">{name}<span class="cursor" aria-hidden="true" data-testid="cursor"></span></h1>
+	<p class="tagline">{tagline}</p>
+	<p class="location">{location}</p>
+	{about.map((p) => <p>{p}</p>)}
+	<ul class="buttons">
+		{
+			links.map((l) => (
+				<li>
+					<a
+						href={l.href}
+						target={l.external ? '_blank' : undefined}
+						rel={l.external ? 'noopener noreferrer' : undefined}
+					>
+						{l.label}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</section>
+
+<style>
+	section {
+		padding-block: 2rem;
+	}
+
+	.prompt {
+		margin: 0;
+		font-family: var(--font-mono);
+		color: var(--muted);
+	}
+
+	.prompt span {
+		color: var(--ok);
+	}
+
+	h1 {
+		margin: 0.25rem 0;
+		font-family: var(--font-mono);
+		font-size: 2rem;
+		overflow-wrap: anywhere;
+	}
+
+	.cursor {
+		display: inline-block;
+		width: 0.6em;
+		height: 1em;
+		margin-left: 0.2em;
+		vertical-align: text-bottom;
+		background: currentColor;
+		animation: blink 1s steps(1) infinite;
+	}
+
+	@keyframes blink {
+		50% {
+			opacity: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.cursor {
+			animation: none;
+		}
+	}
+
+	.tagline {
+		margin: 0;
+		color: var(--accent);
+		font-family: var(--font-mono);
+	}
+
+	.location {
+		margin: 0 0 1rem;
+		color: var(--muted);
+	}
+
+	.buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin: 1.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.buttons a {
+		display: inline-block;
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--border);
+		font-family: var(--font-mono);
+		color: var(--fg);
+		text-decoration: none;
+	}
+
+	.buttons a:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+</style>
