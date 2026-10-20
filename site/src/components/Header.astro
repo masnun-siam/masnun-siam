@@ -13,7 +13,28 @@ const links = [
 			{links.map(({ href, label }) => <li><a href={href}>{label}</a></li>)}
 		</ul>
 	</nav>
+	<button id="theme-toggle" type="button" aria-label="Dark theme" aria-pressed="false">
+		<span aria-hidden="true">◐</span>
+	</button>
 </div>
+
+<script>
+	const button = document.querySelector<HTMLButtonElement>('#theme-toggle');
+	const root = document.documentElement;
+	const sync = () => button?.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+
+	sync();
+	button?.addEventListener('click', () => {
+		const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+		root.dataset.theme = next;
+		try {
+			localStorage.setItem('theme', next);
+		} catch {
+			// storage blocked: the choice lasts for this page view
+		}
+		sync();
+	});
+</script>
 
 <style>
 	.bar {
@@ -31,6 +52,15 @@ const links = [
 		color: var(--ok);
 		font-weight: 700;
 		text-decoration: none;
+	}
+
+	button {
+		padding: 0.25rem 0.5rem;
+		border: 1px solid var(--border);
+		background: none;
+		color: var(--fg);
+		font: inherit;
+		cursor: pointer;
 	}
 
 	ul {

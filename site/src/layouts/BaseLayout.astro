@@ -35,6 +35,18 @@ const ogImage = new URL('/og.png', Astro.site);
 		<meta name="twitter:title" content={title} />
 		{description && <meta name="twitter:description" content={description} />}
 		<meta name="twitter:image" content={ogImage} />
+		<script is:inline>
+			(() => {
+				let stored = null;
+				try {
+					stored = localStorage.getItem('theme');
+				} catch {
+					// storage blocked: fall back to the system theme
+				}
+				const dark = stored === 'dark' || (stored !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+				document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+			})();
+		</script>
 		<slot name="head" />
 	</head>
 	<body>
