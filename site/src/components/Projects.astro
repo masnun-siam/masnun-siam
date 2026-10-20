@@ -1,5 +1,98 @@
 ---
+import { getCollection } from 'astro:content';
 import Section from './Section.astro';
+
+const projects = (await getCollection('projects')).map((p) => p.data).sort((a, b) => a.order - b.order);
 ---
 
-<Section id="projects" title="projects" />
+<Section id="projects" title="projects">
+	{
+		projects.length === 0 ? (
+			<p>-- no entries --</p>
+		) : (
+			<ul class="grid">
+				{projects.map((p) => (
+					<li data-testid="project-card">
+						<h3>{p.name}</h3>
+						<p class="desc">{p.description}</p>
+						<ul class="tags">
+							{p.tags.map((t) => (
+								<li>{t}</li>
+							))}
+						</ul>
+						<p class="links">
+							<a
+								href={p.repo}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`${p.name} repository on GitHub`}>repo</a
+							>
+							{p.demo && (
+								<a
+									href={p.demo}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={`${p.name} live demo`}>demo</a
+								>
+							)}
+						</p>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</Section>
+
+<style>
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+		gap: 1rem;
+	}
+
+	.grid > li {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 1rem;
+		border: 1px solid var(--border);
+	}
+
+	h3 {
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: 1rem;
+		overflow-wrap: anywhere;
+	}
+
+	.desc {
+		flex: 1;
+		margin: 0;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.5rem;
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: var(--muted);
+	}
+
+	.tags li::before {
+		content: '#';
+	}
+
+	.links {
+		display: flex;
+		gap: 1rem;
+		margin: 0;
+		font-family: var(--font-mono);
+	}
+</style>
