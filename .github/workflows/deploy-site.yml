@@ -1,0 +1,83 @@
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+    paths: ["site/**", ".github/workflows/deploy-site.yml"]
+  pull_request:
+    paths: ["site/**", ".github/workflows/deploy-site.yml"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: site/.nvmrc
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-dist
+          path: site/dist
+
+  deploy-preview:
+    needs: gate
+    # Fork PRs get no secrets: they run the gate only.
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: dist
+      - id: branch
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: echo "name=$(printf '%s' "$HEAD_REF" | tr -c 'A-Za-z0-9-' '-')" >> "$GITHUB_OUTPUT"
+      - id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=masnunsiam --branch=${{ steps.branch.outputs.name }}
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          URL: ${{ steps.deploy.outputs.deployment-url }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: gh pr comment "$PR" --edit-last --create-if-none --body "Preview of $SHA at $URL"
+
+  deploy-production:
+    needs: gate
+    # FEATURE_PORTFOLIO_SITE (see FLAGS.md) is off until a release turns it on.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.FEATURE_PORTFOLIO_SITE == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: dist
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=masnunsiam --branch=main
