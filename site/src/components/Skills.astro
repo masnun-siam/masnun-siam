@@ -5,7 +5,7 @@ import Section from './Section.astro';
 const groups = (await getCollection('skills')).map((g) => g.data).sort((a, b) => a.order - b.order);
 ---
 
-<Section id="skills" title="skills">
+<Section id="skillz" title="skills">
 	{
 		groups.length === 0 ? (
 			<p>-- no entries --</p>
