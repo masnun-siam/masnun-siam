@@ -1,5 +1,44 @@
 ---
+import { getEntry } from 'astro:content';
 import Section from './Section.astro';
+
+const entry = await getEntry('profile', 'masnun-siam');
+if (!entry) throw new Error('profile entry "masnun-siam" is missing from profile.yaml');
+const { email, socials } = entry.data;
+
+const links = [{ label: email, href: `mailto:${email}` }, ...socials.map((s) => ({ label: s.label, href: s.url }))];
 ---
 
-<Section id="contact" title="contact" />
+<Section id="contact" title="contact">
+	<ul>
+		{
+			links.map((l) => {
+				const external = l.href.startsWith('https://');
+				return (
+					<li>
+						<a
+							href={l.href}
+							target={external ? '_blank' : undefined}
+							rel={external ? 'noopener noreferrer' : undefined}
+						>
+							{l.label}
+						</a>
+					</li>
+				);
+			})
+		}
+	</ul>
+</Section>
+
+<style>
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		font-family: var(--font-mono);
+		overflow-wrap: anywhere;
+	}
+</style>
