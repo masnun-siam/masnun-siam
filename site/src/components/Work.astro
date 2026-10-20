@@ -1,5 +1,116 @@
 ---
+import { getCollection } from 'astro:content';
 import Section from './Section.astro';
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+// YYYY-MM -> "Mon YYYY"; no Date/Intl, which shift by time zone.
+const label = (ym: string) => {
+	const [y, m] = ym.split('-');
+	return `${MONTHS[Number(m) - 1]} ${y}`;
+};
+
+// Ongoing roles first, then newest end, ties by newest start. YYYY-MM compares as a string.
+const roles = (await getCollection('work')).map((r) => r.data).sort((a, b) => {
+	if (!a.end !== !b.end) return a.end ? 1 : -1;
+	return (b.end ?? '').localeCompare(a.end ?? '') || b.start.localeCompare(a.start);
+});
+
+// A company sits where its newest role is; Map keeps first-insertion order.
+const groups = new Map<string, typeof roles>();
+for (const role of roles) groups.set(role.company, [...(groups.get(role.company) ?? []), role]);
 ---
 
-<Section id="work" title="work" />
+<Section id="work" title="work">
+	{
+		roles.length === 0 ? (
+			<p>-- no entries --</p>
+		) : (
+			<ul class="companies">
+				{[...groups].map(([company, list]) => (
+					<li data-testid="company-group">
+						<h3>{company}</h3>
+						<ul class="roles">
+							{list.map((role) => (
+								<li data-testid="role">
+									<h4>{role.title}</h4>
+									<p class="meta">
+										{role.location} · {role.mode} ·{' '}
+										<time datetime={role.start}>{label(role.start)}</time> –{' '}
+										{role.end ? <time datetime={role.end}>{label(role.end)}</time> : 'Present'}
+									</p>
+									<ul class="highlights">
+										{role.highlights.map((h) => (
+											<li>{h}</li>
+										))}
+									</ul>
+									<ul class="tags">
+										{role.tags.map((t) => (
+											<li>{t}</li>
+										))}
+									</ul>
+								</li>
+							))}
+						</ul>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</Section>
+
+<style>
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.companies > li + li {
+		margin-top: 1.5rem;
+	}
+
+	h3 {
+		margin: 0 0 0.5rem;
+		font-size: 1.1rem;
+	}
+
+	.roles > li {
+		padding-left: 1rem;
+		border-left: 1px solid var(--border);
+	}
+
+	.roles > li + li {
+		margin-top: 1rem;
+	}
+
+	h4 {
+		margin: 0;
+		font-size: 1rem;
+	}
+
+	.meta {
+		margin: 0.25rem 0 0.5rem;
+		color: var(--muted);
+		font-family: var(--font-mono);
+		font-size: 0.875rem;
+	}
+
+	.highlights {
+		list-style: disc;
+		padding-left: 1.25rem;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.5rem;
+		margin-top: 0.5rem;
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: var(--muted);
+	}
+
+	.tags li::before {
+		content: '#';
+	}
+</style>
