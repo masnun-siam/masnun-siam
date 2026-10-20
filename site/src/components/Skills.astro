@@ -1,5 +1,58 @@
 ---
+import { getCollection } from 'astro:content';
 import Section from './Section.astro';
+
+const groups = (await getCollection('skills')).map((g) => g.data).sort((a, b) => a.order - b.order);
 ---
 
-<Section id="skills" title="skills" />
+<Section id="skills" title="skills">
+	{
+		groups.length === 0 ? (
+			<p>-- no entries --</p>
+		) : (
+			<ul class="groups">
+				{groups.map((g) => (
+					<li data-testid="skill-group">
+						<h3>{g.title}</h3>
+						<ul class="tags">
+							{g.items.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</Section>
+
+<style>
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.groups > li + li {
+		margin-top: 1rem;
+	}
+
+	h3 {
+		margin: 0 0 0.5rem;
+		font-size: 1rem;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		font-family: var(--font-mono);
+		font-size: 0.875rem;
+	}
+
+	.tags li {
+		padding: 0.125rem 0.5rem;
+		border: 1px solid var(--border);
+		color: var(--muted);
+	}
+</style>
