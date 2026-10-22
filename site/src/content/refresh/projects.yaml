@@ -1,0 +1,41 @@
+- id: ai-workflow
+  order: 1
+  name: ai-workflow
+  description: 'Claude Code plugin: GitHub issue to reviewed PR, with three human gates.'
+  repo: https://github.com/masnun-siam/ai-workflow
+  tags: [Python, Claude Code, AI agents]
+
+- id: cc-profiles
+  order: 2
+  name: cc-profiles
+  description: Run two or more Claude Code accounts in parallel, sharing one set of skills, agents, commands and settings.
+  repo: https://github.com/masnun-siam/cc-profiles
+  tags: [Shell, Claude Code, CLI]
+
+- id: typevocal
+  order: 3
+  name: typevocal
+  description: Offline speech-to-text desktop app based on Handy. Press a shortcut, speak, and the text appears in any field.
+  repo: https://github.com/masnun-siam/typevocal
+  tags: [Rust, TypeScript, Speech-to-text]
+
+- id: dpdc_balance_checker
+  order: 4
+  name: dpdc_balance_checker
+  description: Flutter app to check DPDC electricity balance and customer details via GraphQL API.
+  repo: https://github.com/masnun-siam/dpdc_balance_checker
+  tags: [Flutter, Dart, GraphQL]
+
+- id: clippy
+  order: 5
+  name: clippy
+  description: Self-hosted URL shortener with password-protected links, expiry dates, a web dashboard and a REST API.
+  repo: https://github.com/masnun-siam/clippy
+  tags: [PHP, Laravel]
+
+- id: bd-govt-job-autofill
+  order: 6
+  name: bd-govt-job-autofill
+  description: Auto-fill Bangladeshi government job application forms on Teletalk portals.
+  repo: https://github.com/masnun-siam/bd-govt-job-autofill
+  tags: [JavaScript, Automation]
