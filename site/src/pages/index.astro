@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import About from '../components/About.astro';
 import Contact from '../components/Contact.astro';
 import Header from '../components/Header.astro';
@@ -7,12 +8,25 @@ import Skills from '../components/Skills.astro';
 import StatusLine from '../components/StatusLine.astro';
 import Work from '../components/Work.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { isSeoAeoOn } from '../lib/flag.ts';
+import { buildGraph, serialize } from '../lib/jsonld.ts';
+
+const title = 'Masnun Siam — Software Engineer';
+
+let jsonLd: string | undefined;
+if (isSeoAeoOn()) {
+	const [profile] = (await getCollection('profile')).map((e) => e.data);
+	const roles = (await getCollection('work')).map((e) => e.data);
+	const skills = (await getCollection('skills')).map((e) => e.data);
+	jsonLd = serialize(buildGraph(profile, roles, skills, { url: new URL('/', Astro.site).href, title }));
+}
 ---
 
 <BaseLayout
-	title="Masnun Siam — Software Engineer"
+	title={title}
 	description="Masnun Siam is a software engineer in Dhaka, Bangladesh, building with Laravel, Flutter and AI tools. Work history, projects, skills and contact."
 >
+	{jsonLd && <script slot="head" is:inline type="application/ld+json" set:html={jsonLd} />}
 	<Header slot="header" />
 	<About />
 	<Work />
