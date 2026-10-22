@@ -1,5 +1,7 @@
+import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
-import { expected } from './refresh-expected';
+import { parse } from 'yaml';
+import { expected, refresh } from './refresh-expected';
 
 const on = process.env.FEATURE_SEO_AEO === 'true';
 
@@ -31,4 +33,24 @@ test('flag on: /llms.txt lists the content', async ({ request }) => {
 test('flag off: /llms.txt is a 404', async ({ request }) => {
 	test.skip(on, 'flag-off assertions');
 	expect((await request.get('/llms.txt')).status()).toBe(404);
+});
+
+test('flag on: /llms.txt has only allowed URLs and the builder\'s own link lines', async ({ request }) => {
+	test.skip(!on || !refresh, 'refreshed-content assertions');
+	const body = await (await request.get('/llms.txt')).text();
+	const load = (f: string) => parse(readFileSync(`src/content/refresh/${f}.yaml`, 'utf8')) as Record<string, any>[];
+	const allowed = new Set<string>([
+		...load('profile')[0].socials.map((s: { url: string }) => s.url),
+		...load('projects').map((p) => p.repo as string),
+	]);
+	const outside = (body.match(/https?:\/\/[^\s)\]]+/g) ?? []).filter(
+		(u) => !allowed.has(u) && !u.startsWith('https://masnunsiam.com'),
+	);
+	expect(outside).toEqual([]);
+	const linkLines = body.split('\n').filter((l) => l.includes(']('));
+	for (const l of linkLines) {
+		expect(l.split('](').length - 1, l).toBe(1);
+		expect(l, l).toMatch(/^- \[[^\]]+\]\(https:\/\/[^)\s]+\)(: .*)?$/);
+	}
+	expect(body.match(/\[[^\]]*\]\([^)]*\)/g)?.length).toBe(linkLines.length);
 });
