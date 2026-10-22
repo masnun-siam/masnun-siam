@@ -29,27 +29,31 @@ jobs:
           cache: npm
           cache-dependency-path: site/package-lock.json
       - run: npm ci
-      - run: npm run check
       - run: npm run test:unit
       - run: npx playwright install --with-deps chromium
-      # FEATURE_SEO_AEO reaches the build and tests only as a fixed expression, never PR-controlled text.
-      # Pull request: test both states; the flag-on build runs last, so it is the one uploaded and previewed.
-      - name: Build and test, flag off
+      # Flags reach the build and tests only as fixed expressions, never PR-controlled text.
+      # UNRELEASED FLAGS (set to true in state 2): FEATURE_SEO_AEO, FEATURE_CONTENT_REFRESH.
+      # A release removes its flag from that list and from the state-2 env below.
+      # Pull request: test two states; state 2 runs last, so it is the one uploaded and previewed.
+      - name: Check, build and test, state 1 (repository variables)
         if: github.event_name == 'pull_request'
         env:
-          FEATURE_SEO_AEO: "false"
-        run: npm run build && npx playwright test
-      - name: Build and test, flag on
+          FEATURE_SEO_AEO: ${{ vars.FEATURE_SEO_AEO == 'true' && 'true' || 'false' }}
+          FEATURE_CONTENT_REFRESH: ${{ vars.FEATURE_CONTENT_REFRESH == 'true' && 'true' || 'false' }}
+        run: npm run check && npm run build && npx playwright test
+      - name: Check, build and test, state 2 (every unreleased flag on)
         if: github.event_name == 'pull_request'
         env:
           FEATURE_SEO_AEO: "true"
-        run: npm run build && npx playwright test
-      # Push or dispatch: one pass in the state of the repository variable (off until a release).
-      - name: Build and test, state of vars.FEATURE_SEO_AEO
+          FEATURE_CONTENT_REFRESH: "true"
+        run: npm run check && npm run build && npx playwright test
+      # Push or dispatch: one pass in the state of the repository variables (off until a release).
+      - name: Check, build and test (repository variables)
         if: github.event_name != 'pull_request'
         env:
           FEATURE_SEO_AEO: ${{ vars.FEATURE_SEO_AEO == 'true' && 'true' || 'false' }}
-        run: npm run build && npx playwright test
+          FEATURE_CONTENT_REFRESH: ${{ vars.FEATURE_CONTENT_REFRESH == 'true' && 'true' || 'false' }}
+        run: npm run check && npm run build && npx playwright test
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
