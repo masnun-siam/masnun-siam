@@ -1,41 +1,41 @@
 - id: ai-workflow
   order: 1
   name: ai-workflow
-  description: 'Claude Code plugin: GitHub issue to reviewed PR, with three human gates.'
+  description: Claude Code plugin that takes a feature from PRD to reviewed pull request, with a local web UI and a Slack-driven review loop.
   repo: https://github.com/masnun-siam/ai-workflow
-  tags: [Python, Claude Code, AI agents]
+  tags: [Python, Claude Code, Slack, Web UI]
 
 - id: cc-profiles
   order: 2
   name: cc-profiles
-  description: Run two or more Claude Code accounts in parallel, sharing one set of skills, agents, commands and settings.
+  description: Bash script that runs several Claude Code accounts side by side, sharing one set of skills, agents and settings.
   repo: https://github.com/masnun-siam/cc-profiles
-  tags: [Shell, Claude Code, CLI]
+  tags: [Shell, Bash, Claude Code, Homebrew]
 
 - id: typevocal
   order: 3
   name: typevocal
-  description: Offline speech-to-text desktop app based on Handy. Press a shortcut, speak, and the text appears in any field.
+  description: 'Offline, privacy-first speech-to-text desktop app: hold a shortcut, speak, and the words land in any text field.'
   repo: https://github.com/masnun-siam/typevocal
-  tags: [Rust, TypeScript, Speech-to-text]
+  tags: [Rust, Tauri, TypeScript, Whisper]
 
 - id: dpdc_balance_checker
   order: 4
   name: dpdc_balance_checker
-  description: Flutter app to check DPDC electricity balance and customer details via GraphQL API.
+  description: Cross-platform Flutter app that shows a DPDC electricity account balance by customer ID, with saved IDs and sharing.
   repo: https://github.com/masnun-siam/dpdc_balance_checker
-  tags: [Flutter, Dart, GraphQL]
+  tags: [Dart, Flutter, GraphQL, Material Design 3]
 
 - id: clippy
   order: 5
   name: clippy
-  description: Self-hosted URL shortener with password-protected links, expiry dates, a web dashboard and a REST API.
+  description: Self-hosted Laravel URL shortener with custom slugs, password-protected and expiring links, a dashboard and a REST API.
   repo: https://github.com/masnun-siam/clippy
-  tags: [PHP, Laravel]
+  tags: [PHP, Laravel, REST API, Sanctum]
 
 - id: bd-govt-job-autofill
   order: 6
   name: bd-govt-job-autofill
-  description: Auto-fill Bangladeshi government job application forms on Teletalk portals.
+  description: Chrome extension and console script that fill Bangladeshi government job forms on Teletalk portals from saved details.
   repo: https://github.com/masnun-siam/bd-govt-job-autofill
-  tags: [JavaScript, Automation]
+  tags: [HTML, JavaScript, Chrome Extension, jQuery]
