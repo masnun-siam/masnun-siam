@@ -1,6 +1,7 @@
 name: Deploy site
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths: ["site/**", ".github/workflows/deploy-site.yml"]
@@ -29,9 +30,26 @@ jobs:
           cache-dependency-path: site/package-lock.json
       - run: npm ci
       - run: npm run check
-      - run: npm run build
+      - run: npm run test:unit
       - run: npx playwright install --with-deps chromium
-      - run: npx playwright test
+      # FEATURE_SEO_AEO reaches the build and tests only as a fixed expression, never PR-controlled text.
+      # Pull request: test both states; the flag-on build runs last, so it is the one uploaded and previewed.
+      - name: Build and test, flag off
+        if: github.event_name == 'pull_request'
+        env:
+          FEATURE_SEO_AEO: "false"
+        run: npm run build && npx playwright test
+      - name: Build and test, flag on
+        if: github.event_name == 'pull_request'
+        env:
+          FEATURE_SEO_AEO: "true"
+        run: npm run build && npx playwright test
+      # Push or dispatch: one pass in the state of the repository variable (off until a release).
+      - name: Build and test, state of vars.FEATURE_SEO_AEO
+        if: github.event_name != 'pull_request'
+        env:
+          FEATURE_SEO_AEO: ${{ vars.FEATURE_SEO_AEO == 'true' && 'true' || 'false' }}
+        run: npm run build && npx playwright test
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
@@ -76,7 +94,8 @@ jobs:
   deploy-production:
     needs: gate
     # FEATURE_PORTFOLIO_SITE (see FLAGS.md) is off until a release turns it on.
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.FEATURE_PORTFOLIO_SITE == 'true'
+    # A dispatch on any other ref runs the gate and deploys nothing.
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main' && vars.FEATURE_PORTFOLIO_SITE == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
