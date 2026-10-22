@@ -7,8 +7,10 @@ import { buildLlmsTxt } from '../lib/llms.ts';
 export const getStaticPaths = (() => (isSeoAeoOn() ? [{ params: { llms: 'llms' } }] : [])) satisfies GetStaticPaths;
 
 export const GET: APIRoute = async () => {
-  const data = async (name: 'work' | 'projects' | 'skills') => (await getCollection(name)).map((e) => e.data);
   const [profile] = (await getCollection('profile')).map((e) => e.data);
-  const body = buildLlmsTxt(profile, await data('work'), await data('projects'), await data('skills'));
+  const roles = (await getCollection('work')).map((e) => e.data);
+  const projects = (await getCollection('projects')).map((e) => e.data);
+  const skills = (await getCollection('skills')).map((e) => e.data);
+  const body = buildLlmsTxt(profile, roles, projects, skills);
   return new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 };
