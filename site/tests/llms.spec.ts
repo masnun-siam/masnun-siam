@@ -44,7 +44,7 @@ test('flag on: /llms.txt has only allowed URLs and the builder\'s own link lines
 		...load('projects').map((p) => p.repo as string),
 	]);
 	const outside = (body.match(/https?:\/\/[^\s)\]]+/g) ?? []).filter(
-		(u) => !allowed.has(u) && !u.startsWith('https://masnunsiam.com'),
+		(u) => !allowed.has(u) && new URL(u).origin !== 'https://masnunsiam.com',
 	);
 	expect(outside).toEqual([]);
 	const linkLines = body.split('\n').filter((l) => l.includes(']('));
