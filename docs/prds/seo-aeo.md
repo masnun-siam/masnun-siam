@@ -209,7 +209,7 @@ flowchart LR
 
 ## Epics
 
-- **E1 SEO and AEO for masnunsiam.com** — covers FR-1 to FR-9. Issue: —
+- **E1 SEO and AEO for masnunsiam.com** — covers FR-1 to FR-9. Issue: #41
 
 ## Decisions
 
