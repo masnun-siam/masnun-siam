@@ -1,0 +1,25 @@
+name: No snapshot files
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  no-pdf-or-zip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fail if the PR adds a .pdf or .zip
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          added=$(git -c core.quotePath=false diff --no-renames --name-only --diff-filter=A "origin/$BASE_REF...HEAD" | grep -iE '\.(pdf|zip)$' || true)
+          if [ -n "$added" ]; then
+            echo "::error::PR adds forbidden files:"
+            echo "$added"
+            exit 1
+          fi
