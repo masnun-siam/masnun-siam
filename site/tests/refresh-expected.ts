@@ -23,7 +23,7 @@ const off = {
 
 // On state: counts come from the refreshed files; the content issues edit the typed strings below and the yaml together.
 const on = {
-	tagline: 'Software Engineer · Laravel · Flutter · AI tools',
+	tagline: 'Assistant Software Engineer · Laravel · AI workflows · SaaS',
 	roles: count('work', /^- id:/gm),
 	groups: distinct('work', /^ {2}company:.*$/gm),
 	cards: count('projects', /^- id:/gm),
