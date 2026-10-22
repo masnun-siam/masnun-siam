@@ -24,7 +24,7 @@ jobs:
           - { name: pin-cc-profiles, card: pin, options: "repo=cc-profiles" }
           - { name: pin-typevocal, card: pin, options: "repo=typevocal" }
           - { name: pin-dpdc_balance_checker, card: pin, options: "repo=dpdc_balance_checker" }
-          - { name: pin-samftp-flutter, card: pin, options: "repo=samftp-flutter" }
+          - { name: pin-clippy, card: pin, options: "repo=clippy" }
           - { name: pin-bd-govt-job-autofill, card: pin, options: "repo=bd-govt-job-autofill" }
     steps:
       - uses: stats-organization/github-readme-stats-action@v2
