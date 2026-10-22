@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { expected } from './refresh-expected';
 
 const on = process.env.FEATURE_SEO_AEO === 'true';
 const ID = 'https://masnunsiam.com/#';
@@ -19,8 +20,8 @@ test('flag on: one JSON-LD block with the Person facts', async ({ page, request 
 	expect(node('ProfilePage').isPartOf['@id']).toBe(`${ID}website`);
 	const person = node('Person');
 	expect(person.name).toBe('Masnun Siam');
-	expect(person.description).toBe('Software Engineer · Laravel · Flutter · AI tools');
-	expect(person.jobTitle).toBe('Software Engineer');
+	expect(person.description).toBe(expected.tagline);
+	expect(person.jobTitle).toBe(expected.roleTitles[0]);
 	expect(person.worksFor.name).toBe('BluBird Interactive Ltd.');
 	expect(person.address).toMatchObject({ addressLocality: 'Dhaka', addressCountry: 'Bangladesh' });
 	expect(person.sameAs).toEqual([

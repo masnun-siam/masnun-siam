@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { expected } from './refresh-expected';
 
 const on = process.env.FEATURE_SEO_AEO === 'true';
 
@@ -9,15 +10,12 @@ test('flag on: /llms.txt lists the content', async ({ request }) => {
 	expect(res.headers()['content-type']).toContain('text/plain');
 	const body = await res.text();
 	expect(body.startsWith('# Masnun Siam')).toBe(true);
-	expect(body).toContain('> Software Engineer · Laravel · Flutter · AI tools — Dhaka, Bangladesh');
+	expect(body).toContain(`> ${expected.tagline} — Dhaka, Bangladesh`);
 	// Four roles, in the Work section's order (newest first).
-	const roles = [
-		'Software Engineer, BluBird Interactive Ltd. (Oct 2024 – Present)',
-		'Senior Software Engineer (Mobile), Binary Fusion (Mar 2024 – Oct 2024)',
-	];
+	const roles = [expected.firstRoleLine, expected.secondRoleLine];
 	for (const r of roles) expect(body).toContain(r);
-	expect(body.match(/^- .+ \(\w{3} \d{4} – (\w{3} \d{4}|Present)\), /gm)).toHaveLength(4);
-	expect(body.match(/^- \[[^\]]+\]\(https:\/\/github\.com\/masnun-siam\/[^)]+\): /gm)).toHaveLength(6);
+	expect(body.match(/^- .+ \(\w{3} \d{4} – (\w{3} \d{4}|Present)\), /gm)).toHaveLength(expected.roles);
+	expect(body.match(/^- \[[^\]]+\]\(https:\/\/github\.com\/masnun-siam\/[^)]+\): /gm)).toHaveLength(expected.cards);
 	expect(body).toContain('- [ai-workflow](https://github.com/masnun-siam/ai-workflow): ');
 	expect(body).toContain('- Mobile: Flutter, Dart, Firebase, Appwrite');
 	expect(body).toContain('- Email: echo@masnunsiam.com');
