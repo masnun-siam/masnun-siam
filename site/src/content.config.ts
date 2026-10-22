@@ -1,24 +1,28 @@
 import { defineCollection } from 'astro:content';
 import { file, type LoaderContext } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { isContentRefreshOn } from './lib/flag.ts';
+
+// The only place that knows FEATURE_CONTENT_REFRESH: off loads the originals, on loads the refreshed copy.
+const dir = isContentRefreshOn() ? 'src/content/refresh' : 'src/content';
 
 const yearMonth = z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, 'Expected YYYY-MM');
 const httpsUrl = z.url({ protocol: /^https$/ });
 
 const profile = defineCollection({
-	loader: file('src/content/profile.yaml'),
+	loader: file(`${dir}/profile.yaml`),
 	schema: z.object({
 		name: z.string().min(1),
-		tagline: z.string().min(1),
+		tagline: z.string().min(1).max(60),
 		location: z.string().min(1),
-		about: z.array(z.string().min(1)).min(1).max(3),
+		about: z.array(z.string().min(1).max(400)).min(1).max(3),
 		email: z.email(),
 		socials: z.array(z.object({ label: z.string().min(1), url: httpsUrl })),
 	}),
 });
 
 const work = defineCollection({
-	loader: file('src/content/work.yaml'),
+	loader: file(`${dir}/work.yaml`),
 	schema: z
 		.object({
 			company: z.string().min(1),
@@ -28,7 +32,7 @@ const work = defineCollection({
 			end: yearMonth.optional(),
 			location: z.string().min(1),
 			mode: z.enum(['Remote', 'On-site', 'Hybrid']),
-			highlights: z.array(z.string().min(1)).min(1).max(4),
+			highlights: z.array(z.string().min(1).max(120)).min(1).max(4),
 			tags: z.array(z.string().min(1)),
 		})
 		// YYYY-MM strings compare correctly as plain strings.
@@ -38,7 +42,7 @@ const work = defineCollection({
 		}),
 });
 
-const projectsFile = file('src/content/projects.yaml');
+const projectsFile = file(`${dir}/projects.yaml`);
 
 const projects = defineCollection({
 	// A schema validates one entry at a time, so unique `order` is checked after the file loads.
@@ -69,7 +73,7 @@ const projects = defineCollection({
 });
 
 const skills = defineCollection({
-	loader: file('src/content/skills.yaml'),
+	loader: file(`${dir}/skills.yaml`),
 	schema: z.object({
 		order: z.number().int(),
 		title: z.string().min(1),
