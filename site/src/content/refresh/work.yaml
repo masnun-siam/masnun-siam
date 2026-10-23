@@ -1,12 +1,22 @@
-- id: blubird-software-engineer
+- id: blubird-assistant-software-engineer
   company: BluBird Interactive Ltd.
-  title: Software Engineer
-  start: 2024-10
-  location: Dhaka
-  mode: Remote
+  title: Assistant Software Engineer
+  start: 2026-09
+  location: Dhaka, Bangladesh
+  mode: Hybrid
   highlights:
-    - Build robust server-side solutions, RESTful APIs and scalable web applications with Laravel and PHP.
-    - Collaborate with cross-functional teams to deliver software that meets business requirements.
+    - Apply AI fluency and AI harnessing to run AI-driven workflows on SaaS products.
+  tags: [AI fluency, AI harnessing, AI-driven workflow, SaaS]
+
+- id: blubird-junior-software-engineer
+  company: BluBird Interactive Ltd.
+  title: Junior Software Engineer
+  start: 2024-10
+  end: 2026-08
+  location: Dhaka, Bangladesh
+  mode: Hybrid
+  highlights:
+    - Built server-side features and RESTful APIs with Laravel and PHP.
   tags: [PHP, Laravel, MySQL, REST APIs, Git]
 
 - id: binary-fusion-senior-software-engineer
@@ -14,12 +24,11 @@
   title: Senior Software Engineer (Mobile)
   start: 2024-03
   end: 2024-10
-  location: Dhaka
+  location: Dhaka, Bangladesh
   mode: On-site
   highlights:
     - Led a small, diverse team of junior developers and delivered stable client projects.
-    - Contributed to backend development with PHP and Laravel.
-    - Reviewed code to ensure quality and adherence to best practices.
+    - Contributed to backend development with PHP and Laravel, and reviewed code for quality and best practices.
   tags: [Flutter, Dart, PHP, Laravel, Firebase, MySQL]
 
 - id: binary-fusion-software-engineer
@@ -27,7 +36,7 @@
   title: Software Engineer (Mobile)
   start: 2023-03
   end: 2024-02
-  location: Dhaka
+  location: Dhaka, Bangladesh
   mode: On-site
   highlights:
     - Used native platform channels to integrate Flutter apps with platform-specific components.
@@ -41,11 +50,11 @@
   title: Junior Flutter Developer
   start: 2020-11
   end: 2023-02
-  location: New York
+  location: New York, United States
   mode: Remote
   highlights:
-    - Developed and maintained cross-platform apps for various clients with Flutter and Dart.
-    - Managed state with Provider, BLoC, Riverpod and GetX.
+    - Managed state with Provider, BLoC, Riverpod, GetX and get_it.
     - Integrated apps with REST APIs, Firebase and cloud services, applying TDD, DDD, MVC and MVVM.
+    - Scraped website data with Dart and HTML packages.
     - Explored blockchain and Ethereum, building decentralized apps with Solidity.
   tags: [Flutter, Dart, Firebase, Stripe, Pusher, Solidity, Web3]
