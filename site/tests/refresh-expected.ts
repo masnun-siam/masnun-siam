@@ -16,6 +16,7 @@ const off = {
 	cards: 6,
 	skillGroups: 3,
 	roleTitles: ['Software Engineer', 'Senior Software Engineer (Mobile)', 'Software Engineer (Mobile)', 'Junior Flutter Developer'],
+	currentRange: 'Oct 2024 – Present',
 	firstRoleLine: 'Software Engineer, BluBird Interactive Ltd. (Oct 2024 – Present)',
 	secondRoleLine: 'Senior Software Engineer (Mobile), Binary Fusion (Mar 2024 – Oct 2024)',
 	repos,
@@ -28,9 +29,10 @@ const on = {
 	groups: distinct('work', /^ {2}company:.*$/gm),
 	cards: count('projects', /^- id:/gm),
 	skillGroups: count('skills', /^- id:/gm),
-	roleTitles: ['Software Engineer', 'Senior Software Engineer (Mobile)', 'Software Engineer (Mobile)', 'Junior Flutter Developer'],
-	firstRoleLine: 'Software Engineer, BluBird Interactive Ltd. (Oct 2024 – Present)',
-	secondRoleLine: 'Senior Software Engineer (Mobile), Binary Fusion (Mar 2024 – Oct 2024)',
+	roleTitles: ['Assistant Software Engineer', 'Junior Software Engineer', 'Senior Software Engineer (Mobile)', 'Software Engineer (Mobile)', 'Junior Flutter Developer'],
+	currentRange: 'Sep 2026 – Present',
+	firstRoleLine: 'Assistant Software Engineer, BluBird Interactive Ltd. (Sep 2026 – Present)',
+	secondRoleLine: 'Junior Software Engineer, BluBird Interactive Ltd. (Oct 2024 – Aug 2026)',
 	repos,
 };
 

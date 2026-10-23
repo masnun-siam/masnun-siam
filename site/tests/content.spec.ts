@@ -27,7 +27,7 @@ test('work timeline: four roles in three company groups, newest first', async ({
 	await expect(page.getByTestId('role')).toHaveCount(expected.roles);
 	await expect(page.getByTestId('company-group')).toHaveCount(expected.groups);
 	await expect(page.getByTestId('role').locator('h4')).toHaveText(expected.roleTitles);
-	await expect(page.locator('#work')).toContainText('Oct 2024 – Present');
+	await expect(page.locator('#work')).toContainText(expected.currentRange);
 });
 
 test('project cards in order with repo links', async ({ page }) => {
