@@ -16,8 +16,8 @@
 
 ## 👨‍💻 About me
 
-- 🏢 Software Engineer at **BluBird Interactive Ltd.**, Dhaka 🇧🇩
-- 🤖 Building **Claude Code plugins and AI developer workflows**: [ai-workflow](https://github.com/masnun-siam/ai-workflow), [cc-profiles](https://github.com/masnun-siam/cc-profiles)
+- 🏢 Assistant Software Engineer at **BluBird Interactive Ltd.**, Dhaka 🇧🇩 (hybrid)
+- 🤖 Building **AI-driven developer workflows and SaaS backends** with Laravel and Claude Code: [ai-workflow](https://github.com/masnun-siam/ai-workflow), [cc-profiles](https://github.com/masnun-siam/cc-profiles)
 - 🌱 Currently learning **Docker & AWS**
 - ⚡ Fun fact: hardcore **Vim** user who loves watching **anime**
 
@@ -35,6 +35,9 @@
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Scalable Web Applications](https://img.shields.io/badge/Scalable%20Web%20Applications-4B5563?style=for-the-badge&logoColor=white)
+![Web Scraping](https://img.shields.io/badge/Web%20Scraping-4B5563?style=for-the-badge&logoColor=white)
+![SaaS](https://img.shields.io/badge/SaaS-4B5563?style=for-the-badge&logoColor=white)
 
 **Tools & DevOps**<br>
 ![Neovim](https://img.shields.io/badge/Neovim-57A143?style=for-the-badge&logo=neovim&logoColor=white)
@@ -45,6 +48,9 @@
 ![AWS](https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-D97757?style=for-the-badge&logo=claude&logoColor=white)
+![AI fluency](https://img.shields.io/badge/AI%20fluency-4B5563?style=for-the-badge&logoColor=white)
+![AI harnessing](https://img.shields.io/badge/AI%20harnessing-4B5563?style=for-the-badge&logoColor=white)
+![AI-driven workflow](https://img.shields.io/badge/AI--driven%20workflow-4B5563?style=for-the-badge&logoColor=white)
 
 ## 🚀 Featured projects
 
@@ -53,7 +59,7 @@
 <a href="https://github.com/masnun-siam/cc-profiles"><picture><source media="(prefers-color-scheme: dark)" srcset="./profile/pin-cc-profiles-dark.svg"><img src="./profile/pin-cc-profiles-light.svg" alt="cc-profiles" /></picture></a>
 <a href="https://github.com/masnun-siam/typevocal"><picture><source media="(prefers-color-scheme: dark)" srcset="./profile/pin-typevocal-dark.svg"><img src="./profile/pin-typevocal-light.svg" alt="typevocal" /></picture></a>
 <a href="https://github.com/masnun-siam/dpdc_balance_checker"><picture><source media="(prefers-color-scheme: dark)" srcset="./profile/pin-dpdc_balance_checker-dark.svg"><img src="./profile/pin-dpdc_balance_checker-light.svg" alt="dpdc_balance_checker" /></picture></a>
-<a href="https://github.com/masnun-siam/samftp-flutter"><picture><source media="(prefers-color-scheme: dark)" srcset="./profile/pin-samftp-flutter-dark.svg"><img src="./profile/pin-samftp-flutter-light.svg" alt="samftp-flutter" /></picture></a>
+<a href="https://github.com/masnun-siam/clippy"><picture><source media="(prefers-color-scheme: dark)" srcset="./profile/pin-clippy-dark.svg"><img src="./profile/pin-clippy-light.svg" alt="clippy" /></picture></a>
 <a href="https://github.com/masnun-siam/bd-govt-job-autofill"><picture><source media="(prefers-color-scheme: dark)" srcset="./profile/pin-bd-govt-job-autofill-dark.svg"><img src="./profile/pin-bd-govt-job-autofill-light.svg" alt="bd-govt-job-autofill" /></picture></a>
 </div>
 
