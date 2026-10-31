@@ -25,14 +25,14 @@ const projects = (await getCollection('projects')).map((p) => p.data).sort((a, b
 								href={p.repo}
 								target="_blank"
 								rel="noopener noreferrer"
-								aria-label={`${p.name} repository on GitHub`}>repo</a
+								aria-label={`repo: ${p.name} on GitHub`}>repo</a
 							>
 							{p.demo && (
 								<a
 									href={p.demo}
 									target="_blank"
 									rel="noopener noreferrer"
-									aria-label={`${p.name} live demo`}>demo</a
+									aria-label={`demo: ${p.name} live`}>demo</a
 								>
 							)}
 						</p>
