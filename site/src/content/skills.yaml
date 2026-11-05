@@ -6,9 +6,9 @@
 - id: backend-web
   order: 2
   title: Backend & Web
-  items: [Laravel, PHP, MySQL, TypeScript, Python]
+  items: [Laravel, PHP, MySQL, TypeScript, Python, Scalable Web Applications, Web Scraping, SaaS]
 
 - id: tools-devops
   order: 3
   title: Tools & DevOps
-  items: [Neovim, Linux, macOS, Git, Docker, AWS, Postman, Claude Code]
+  items: [Neovim, Linux, macOS, Git, Docker, AWS, Postman, Claude Code, AI fluency, AI harnessing, AI-driven workflow]

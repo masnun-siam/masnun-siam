@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
 import { parse } from 'yaml';
-import { expected, refresh } from './refresh-expected';
+import { expected } from './expected';
 
 const on = process.env.FEATURE_SEO_AEO === 'true';
 
@@ -13,7 +13,7 @@ test('flag on: /llms.txt lists the content', async ({ request }) => {
 	const body = await res.text();
 	expect(body.startsWith('# Masnun Siam')).toBe(true);
 	expect(body).toContain(`> ${expected.tagline} — Dhaka, Bangladesh`);
-	// Four roles, in the Work section's order (newest first).
+	// Roles in the Work section's order (newest first).
 	const roles = [expected.firstRoleLine, expected.secondRoleLine];
 	for (const r of roles) expect(body).toContain(r);
 	expect(body.match(/^- .+ \(\w{3} \d{4} – (\w{3} \d{4}|Present)\), /gm)).toHaveLength(expected.roles);
@@ -36,9 +36,9 @@ test('flag off: /llms.txt is a 404', async ({ request }) => {
 });
 
 test('flag on: /llms.txt has only allowed URLs and the builder\'s own link lines', async ({ request }) => {
-	test.skip(!on || !refresh, 'refreshed-content assertions');
+	test.skip(!on, 'flag-on assertions');
 	const body = await (await request.get('/llms.txt')).text();
-	const load = (f: string) => parse(readFileSync(`src/content/refresh/${f}.yaml`, 'utf8')) as Record<string, any>[];
+	const load = (f: string) => parse(readFileSync(`src/content/${f}.yaml`, 'utf8')) as Record<string, any>[];
 	const allowed = new Set<string>([
 		...load('profile')[0].socials.map((s: { url: string }) => s.url),
 		...load('projects').map((p) => p.repo as string),

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { expected } from './refresh-expected';
+import { expected } from './expected';
 
 const on = process.env.FEATURE_SEO_AEO === 'true';
 const ID = 'https://masnunsiam.com/#';

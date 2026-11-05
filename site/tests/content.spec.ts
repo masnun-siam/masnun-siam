@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { expected } from './refresh-expected';
+import { expected } from './expected';
 
 test.beforeEach(async ({ page }) => {
 	await page.goto('/');
@@ -23,7 +23,7 @@ test('cursor blinks, and stops under reduced motion', async ({ page }) => {
 	expect(await animationName()).toBe('none');
 });
 
-test('work timeline: four roles in three company groups, newest first', async ({ page }) => {
+test('work timeline: roles in company groups, newest first', async ({ page }) => {
 	await expect(page.getByTestId('role')).toHaveCount(expected.roles);
 	await expect(page.getByTestId('company-group')).toHaveCount(expected.groups);
 	await expect(page.getByTestId('role').locator('h4')).toHaveText(expected.roleTitles);

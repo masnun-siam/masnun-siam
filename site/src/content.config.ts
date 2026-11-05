@@ -1,10 +1,8 @@
 import { defineCollection } from 'astro:content';
 import { file, type LoaderContext } from 'astro/loaders';
 import { z } from 'astro/zod';
-import { isContentRefreshOn } from './lib/flag.ts';
 
-// The only place that knows FEATURE_CONTENT_REFRESH: off loads the originals, on loads the refreshed copy.
-const dir = isContentRefreshOn() ? 'src/content/refresh' : 'src/content';
+const dir = 'src/content';
 
 const yearMonth = z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, 'Expected YYYY-MM');
 const httpsUrl = z.url({ protocol: /^https$/ });
