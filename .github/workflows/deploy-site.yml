@@ -32,27 +32,24 @@ jobs:
       - run: npm run test:unit
       - run: npx playwright install --with-deps chromium
       # Flags reach the build and tests only as fixed expressions, never PR-controlled text.
-      # UNRELEASED FLAGS (set to true in state 2): FEATURE_SEO_AEO, FEATURE_CONTENT_REFRESH.
+      # UNRELEASED FLAGS (set to true in state 2): FEATURE_SEO_AEO.
       # A release removes its flag from that list and from the state-2 env below.
       # Pull request: test two states; state 2 runs last, so it is the one uploaded and previewed.
       - name: Check, build and test, state 1 (repository variables)
         if: github.event_name == 'pull_request'
         env:
           FEATURE_SEO_AEO: ${{ vars.FEATURE_SEO_AEO == 'true' && 'true' || 'false' }}
-          FEATURE_CONTENT_REFRESH: ${{ vars.FEATURE_CONTENT_REFRESH == 'true' && 'true' || 'false' }}
         run: npm run check && npm run build && npx playwright test
       - name: Check, build and test, state 2 (every unreleased flag on)
         if: github.event_name == 'pull_request'
         env:
           FEATURE_SEO_AEO: "true"
-          FEATURE_CONTENT_REFRESH: "true"
         run: npm run check && npm run build && npx playwright test
       # Push or dispatch: one pass in the state of the repository variables (off until a release).
       - name: Check, build and test (repository variables)
         if: github.event_name != 'pull_request'
         env:
           FEATURE_SEO_AEO: ${{ vars.FEATURE_SEO_AEO == 'true' && 'true' || 'false' }}
-          FEATURE_CONTENT_REFRESH: ${{ vars.FEATURE_CONTENT_REFRESH == 'true' && 'true' || 'false' }}
         run: npm run check && npm run build && npx playwright test
       - uses: actions/upload-artifact@v4
         if: failure()

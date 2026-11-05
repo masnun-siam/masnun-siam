@@ -1,10 +1,11 @@
 - id: masnun-siam
   name: Masnun Siam
-  tagline: Software Engineer · Laravel · Flutter · AI tools
+  tagline: Assistant Software Engineer · Laravel · AI workflows · SaaS
   location: Dhaka, Bangladesh
   about:
-    - I'm a software engineer specializing in backend development with Laravel and PHP, bringing a unique perspective from 4+ years of mobile development experience. I build robust server-side solutions, RESTful APIs and scalable web applications.
-    - My journey from Flutter to backend engineering gives me a view of the full development lifecycle. Having been on the consuming side of APIs, I design backends that are developer-friendly and integrate cleanly with the frontend. I have led development teams, reviewed code and kept best practices in place.
+    - I'm a software engineer specializing in backend development with Laravel and PHP, bringing a perspective from 4+ years of mobile development. I build robust server-side solutions, RESTful APIs and scalable web applications.
+    - My journey from Flutter to backend engineering gives me a view of the full development lifecycle. Having been on the consuming side of APIs, I design backends that are developer-friendly and integrate cleanly with the frontend.
+    - I have led development teams, conducted code reviews and kept best practices in place. My toolkit includes Laravel, PHP, RESTful API design, database management and third-party integrations, and I deliver clean, maintainable code that drives business value.
   email: echo@masnunsiam.com
   socials:
     - label: GitHub

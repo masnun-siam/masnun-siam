@@ -15,9 +15,9 @@ export const badText = (entries: Record<string, unknown>[]): string[] =>
     ),
   );
 
-const load = (file: string) => parse(readFileSync(`src/content/refresh/${file}.yaml`, 'utf8')) as Record<string, unknown>[];
+const load = (file: string) => parse(readFileSync(`src/content/${file}.yaml`, 'utf8')) as Record<string, unknown>[];
 
-test('refreshed content text fields are plain text', () => {
+test('content text fields are plain text', () => {
   for (const file of ['profile', 'work', 'projects', 'skills']) assert.deepEqual(badText(load(file)), [], file);
 });
 
